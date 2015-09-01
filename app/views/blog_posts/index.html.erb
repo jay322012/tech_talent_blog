@@ -1,0 +1,41 @@
+<body>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Blog Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Blog entry</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+</table>
+
+
+<div class= "row">
+  <% @blog_posts.each do |blog_post| %>
+  
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><td><%= blog_post.title %></td></h3>
+  </div>
+  <div class="panel-body">
+        By: <%= blog_post.author %> posted at: <%= blog_post.created_at.strftime('%m/%d/%Y at %I:%M%p')%>
+        <p><%= blog_post.blog_entry[0..250] %>...[<%= link_to 'Read More', blog_post %>] </p>
+        
+  </div>
+  <div class="panel-footer">
+        <!--<button type="button" class="btn btn-primary"><%= link_to 'Show', blog_post %>-->
+        <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_blog_post_path(blog_post) %></button>  
+        <button type="button" class="btn btn-danger"><%= link_to 'Delete', blog_post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  </div>
+</div>
+<% end %>
+</div>
+<br>
+
+        <button type="button" class="btn btn-primary"><%= link_to 'New Blog Post', new_blog_post_path  %>
+</body>
