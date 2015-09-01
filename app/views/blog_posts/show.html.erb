@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>Author:</strong>
-  <%= @blog_post.author %>
+  <strong></strong>
+  <%= @blog_post.user.email %>
 </p>
 
 <p>
@@ -26,7 +26,7 @@
       </div>
       <% @blog_post.comments.each do |comment| %>
         <div class="panel-body">
-          <p><strong> <%= comment.author %></strong> said: <%= time_ago_in_words(comment.created_at) %> ago</p>
+          <p><strong> <%= comment.user.email %></strong> said: <%= time_ago_in_words(comment.created_at) %> ago</p>
           <p><%= comment.comment_entry %></p>
         </div>
       <% end %>

@@ -1,5 +1,6 @@
 <body>
 <p id="notice"><%= notice %></p>
+<p>Welcome, <%= current_user.email %></p>
 
 <h1>Listing Blog Posts</h1>
 
@@ -23,7 +24,7 @@
     <h3 class="panel-title"><td><%= blog_post.title %></td></h3>
   </div>
   <div class="panel-body">
-        By: <%= blog_post.author %> posted at: <%= blog_post.created_at.strftime('%m/%d/%Y at %I:%M%p')%>
+        By: <%= blog_post.user.email %> posted at: <%= blog_post.created_at.strftime('%m/%d/%Y at %I:%M%p')%>
         <p><%= blog_post.blog_entry[0..250] %>...[<%= link_to 'Read More', blog_post %>] </p>
         
   </div>
