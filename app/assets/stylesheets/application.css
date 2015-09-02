@@ -19,3 +19,7 @@
 body {
     background-color: #FFFF99;
 }
+
+.container{
+    background-color: rgba(250, 250, 250, .3);
+}

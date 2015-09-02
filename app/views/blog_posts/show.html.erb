@@ -6,17 +6,21 @@
 </p>
 
 <p>
-  <strong></strong>
-  <%= @blog_post.user.email %>
+  <strong>
+    <%= @blog_post.user.username %>
+  </strong>
 </p>
 
 <p>
   <strong>Blog entry:</strong>
   <%= @blog_post.blog_entry %>
 </p>
-
-<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
-<%= link_to 'Back', blog_posts_path %>
+<% if current_user.id == @blog_post.user.id %>
+  <div class="panel-footer">
+    <%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+    <%= link_to 'Back', blog_posts_path %>
+  </div>
+<% end %>
 
 <div>
   <%= render 'comments/form' %>
@@ -26,7 +30,7 @@
       </div>
       <% @blog_post.comments.each do |comment| %>
         <div class="panel-body">
-          <p><strong> <%= comment.user.email %></strong> said: <%= time_ago_in_words(comment.created_at) %> ago</p>
+          <p><strong> <%= link_to comment.user.username, user_posts_path(id: comment.user.id) %></strong> said: <%= time_ago_in_words(comment.created_at) %> ago</p>
           <p><%= comment.comment_entry %></p>
         </div>
       <% end %>
